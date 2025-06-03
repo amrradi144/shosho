@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>بنت عموري</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Cairo", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #ffccd5, #ffb3c1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-family: "Cairo", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 900;
+        font-size: 2.5rem;
+        color: #d63384;
+        margin-bottom: 10px;
+      }
+
+      .love-image {
+        max-width: 100%;
+        width: 200px;
+        height: 200px;
+        border-radius: 16px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 12px #ffb6c1;
+      }
+
+      button {
+        font-size: 1.5rem;
+        background-color: #ff4d6d;
+        color: white;
+        border: none;
+        padding: 15px 25px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #e63950;
+      }
+
+      #quote {
+        margin-top: 30px;
+        font-size: 1.2rem;
+        color: #800f2f;
+        max-width: 600px;
+        background-color: #ffe6eb;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        min-height: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>عموري بيحبك يبنتي ❤️</h1>
+    <img src="IMG-20250330-WA0022.jpg" alt="صورة حب" class="love-image" />
+    <button onclick="getLoveQuote()" style" font-size: 1.2rem ">دوسي يا شوشو شوفي عموري بيقولك إيه</button>
+    <div id="quote"></div>
+
+    <script>
+      const baseQuotes = [
+        "أحبك لأنك أنتِ، ببساطة.",
+        "وجودك في حياتي هو النعمة اللي كنت بدور عليها.",
+        "أنتِ دنيتي وكل أوقاتي الحلوة.",
+        "كل لحظة جنبك هي حياة بحد ذاتها.",
+        "أنا مش بس بحبك، أنا متعلق بيكِ بكل تفاصيلك.",
+        "معاكي، الدنيا بتضحكلي من غير سبب.",
+        "إنتِ الحُلم اللي صحيت عليه وماكنتش عايز أصحى.",
+        "بحبك أكتر من الكلام اللي ممكن يتقال.",
+        "في حضنك بس بحس بالأمان الحقيقي.",
+        "إنتي أغلى من كل الكلام، وأجمل من كل الأحلام.",
+        "كل مرة بشوفك، بقلبي بيدق كأني بشوفك لأول مرة.",
+        "حبك عندي مش اختيار، ده قدر.",
+        "من غيرك مافيش معنى لأي حاجة.",
+        "أنتِ الحياة اللي تمنيتها من زمان.",
+        "عمري كله ما يكفيني أحبك فيه.",
+        "بحبك بكل لحظة، بكل نفس، بكل كلمة.",
+        "كل نظرة منك بتخلي قلبي يرقص.",
+        "صوتك موسيقى بترقص قلبي.",
+        "ضحكتك هي سر سعادتي.",
+        "كل حاجة فيكي بتسحرني.",
+      ];
+
+      const loveQuotesArabic = Array.from({ length: 2000 }, (_, i) => {
+        const baseIndex = i % baseQuotes.length;
+        let quote = baseQuotes[baseIndex];
+        if (quote.endsWith("❤️")) {
+          quote = quote.slice(0, -1).trim();
+        }
+        return quote;
+      });
+
+      // Shuffle the quotes array to ensure no repetition until all quotes are shown
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+      const shuffledQuotes = shuffleArray([...loveQuotesArabic]);
+      let currentQuoteIndex = 0;
+
+      function getLoveQuote() {
+        const quoteBox = document.getElementById("quote");
+        quoteBox.textContent = "بيفكرلك دلوقتي... 💭";
+
+        setTimeout(() => {
+          quoteBox.textContent = `"${shuffledQuotes[currentQuoteIndex]}"`;
+          currentQuoteIndex = (currentQuoteIndex + 1) % shuffledQuotes.length;
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
